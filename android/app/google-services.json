@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30956675347",
+    "project_id": "tawhidalogin",
+    "storage_bucket": "tawhidalogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30956675347:android:7b30b533ae96c78c27fae6",
+        "android_client_info": {
+          "package_name": "com.example.tawhida_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCq6biBeu2wDCXmjUnCgz-2D5-IzQ5MZSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
