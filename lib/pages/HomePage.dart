@@ -104,7 +104,7 @@ class HomePage extends StatelessWidget {
                                 height: 45,
                                 width: 45,
                                 child: ImageIcon(
-                                  AssetImage("assets/images/spo2.png"),
+                                  AssetImage("lib/images/spo2.png"),
                                   color: Color.fromRGBO(31, 128, 195, 1),
                                 ),
                               ),
@@ -128,7 +128,10 @@ class HomePage extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const EcgPage()));
+                                      builder: (context) => const EcgPage(
+                                            userId:
+                                                'XYeapz3yTfh4yet5tBGk35eneJm1',
+                                          )));
                             },
                             child: Container(
                               height: 116,
@@ -148,7 +151,7 @@ class HomePage extends StatelessWidget {
                                 height: 45,
                                 width: 45,
                                 child: ImageIcon(
-                                  AssetImage("assets/images/ECG.png"),
+                                  AssetImage("lib/images/ECG.png"),
                                   color: Color.fromRGBO(31, 128, 195, 1),
                                 ),
                               ),
@@ -199,7 +202,7 @@ class HomePage extends StatelessWidget {
                                 height: 45,
                                 width: 45,
                                 child: ImageIcon(
-                                  AssetImage("assets/images/RC.png"),
+                                  AssetImage("lib/images/RC.png"),
                                   color: Color.fromRGBO(31, 128, 195, 1),
                                   size: 40,
                                 ),
@@ -244,7 +247,7 @@ class HomePage extends StatelessWidget {
                                 height: 50,
                                 width: 50,
                                 child: ImageIcon(
-                                  AssetImage("assets/images/EMG.png"),
+                                  AssetImage("lib/images/EMG.png"),
                                   color: Color.fromRGBO(31, 128, 195, 1),
                                   size: 45,
                                 ),
@@ -299,7 +302,7 @@ class HomePage extends StatelessWidget {
                                 height: 45,
                                 width: 45,
                                 child: ImageIcon(
-                                  AssetImage("assets/images/GLC.png"),
+                                  AssetImage("lib/images/GLC.png"),
                                   color: Color.fromRGBO(31, 128, 195, 1),
                                   size: 40,
                                 ),
@@ -326,7 +329,7 @@ class HomePage extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (context) => TemperaturePage(
                                           userId:
-                                              "RpJP0eVgJrOiAZm1pgVyoRGvwY13")));
+                                              "XYeapz3yTfh4yet5tBGk35eneJm1")));
                             },
                             child: Container(
                               height: 116,
@@ -346,7 +349,7 @@ class HomePage extends StatelessWidget {
                                 height: 45,
                                 width: 45,
                                 child: ImageIcon(
-                                  AssetImage("assets/images/TC.png"),
+                                  AssetImage("lib/images/TC.png"),
                                   color: Color.fromRGBO(31, 128, 195, 1),
                                   size: 40,
                                 ),

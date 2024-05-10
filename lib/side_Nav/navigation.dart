@@ -1,10 +1,14 @@
 // ignore_for_file: avoid_returning_null_for_void, prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tawhida_login/pages/HomePage.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +21,13 @@ class NavBar extends StatelessWidget {
             accountEmail: const Text("imen.ayari@gmail.com"),
             currentAccountPicture: CircleAvatar(
                 child: ClipOval(
-              child: Image.asset("assets/images/profile.jpg",
+              child: Image.asset("lib/images/profile.jpg",
                   width: 90, height: 90, fit: BoxFit.cover),
             )),
             decoration: const BoxDecoration(
               color: Color.fromARGB(8, 210, 225, 1),
               image: DecorationImage(
-                image: AssetImage('assets/images/bcg.jpg'),
+                image: AssetImage('lib/images/bcg.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -78,7 +82,7 @@ class NavBar extends StatelessWidget {
               color: Colors.black26,
             ),
             title: Text("Log out"),
-            onTap: () => null,
+            onTap: () => signUserOut(),
           ),
         ],
       ),

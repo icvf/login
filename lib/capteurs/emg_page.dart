@@ -107,8 +107,8 @@ class _EmgPageState extends State<EmgPage> with SingleTickerProviderStateMixin {
                 animation: _animation,
                 builder: (_, __) => Image.asset(
                   _animation.value == 0
-                      ? 'images/icon1.png'
-                      : 'images/icon2.png',
+                      ? 'lib/images/icon1.png'
+                      : 'lib/images/icon2.png',
                   width: 50,
                   height: 50,
                 ),

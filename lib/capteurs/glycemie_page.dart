@@ -24,7 +24,7 @@ class _GlycemiePageState extends State<GlycemiePage> {
     super.initState();
     // Initialize the recupTemperatureData with the specific field 'temperature'
     recupTemperatureData =
-        RecupRealTimeData(userId: widget.userId, field: 'temperature');
+        RecupRealTimeData(userId: widget.userId, field: 'glycemie');
   }
 
   @override
@@ -128,7 +128,7 @@ class _GlycemiePageState extends State<GlycemiePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.asset(
-                    'assets/images/GLC4.png',
+                    'lib/images/GLC4.png',
                     width: 150,
                     height: 200,
                   ),
