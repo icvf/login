@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tawhida_login/pages/config_device.dart';
 
 void main() => runApp(MaterialApp(home: BLEPage()));
 
@@ -79,6 +80,13 @@ class _BLEPageState extends State<BLEPage> {
             _deviceConnectionStates[deviceId] = true;
           });
           _showToast("Connected to ${connectionState.deviceId}");
+
+          // After showing the toast, navigate to the ConfigDevice page
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ConfigDevice(
+                    device: _foundDevices.firstWhere((d) => d.id == deviceId),
+                    ble: _ble,
+                  )));
         }
       },
       onError: (error) {
@@ -100,7 +108,7 @@ class _BLEPageState extends State<BLEPage> {
         msg: message,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 3,
+        timeInSecForIosWeb: 6,
         backgroundColor: Colors.black,
         textColor: Colors.white,
         fontSize: 16.0);
