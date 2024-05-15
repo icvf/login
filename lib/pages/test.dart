@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 
@@ -5,8 +7,7 @@ class ConfigDevice extends StatefulWidget {
   final DiscoveredDevice device;
   final FlutterReactiveBle ble;
 
-  const ConfigDevice({Key? key, required this.device, required this.ble})
-      : super(key: key);
+  const ConfigDevice({super.key, required this.device, required this.ble});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -55,6 +56,7 @@ class _ConfigDeviceState extends State<ConfigDevice> {
           _qualifiedCharacteristic!,
           value: _textController.text.codeUnits,
         );
+
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text("Data sent successfully!")));
       } catch (e) {
