@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tawhida_login/pages/save.dart';
 import 'package:tawhida_login/side_nav/navigation.dart'; // Adjust import as necessary for your project structure
 
 class dashBorad extends StatelessWidget {
@@ -8,7 +9,7 @@ class dashBorad extends StatelessWidget {
 
   final String userId = FirebaseAuth.instance.currentUser?.uid ??
       'defaultUserId'; // Fallback to a default user ID if none is found
-
+  final Map<String, String> sensorData = {}; // Map to store sensor data
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +60,28 @@ class dashBorad extends StatelessWidget {
                 sensorTile('Body Temperature', userId, 'temperature',
                     'lib/images/TC.png', ' °C'),
                 sensorTile('ECG', userId, 'ecg', 'lib/images/ECG.png', ''),
-                sensorTile('EMG', userId, 'emg', 'lib/images/EMG.png', ''),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () async {
+                    Save save = Save(userId);
+                    await save.saveData(sensorData);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Data saved successfully')),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                  ),
+                  child: const Text(
+                    'Save All',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -81,6 +103,10 @@ class dashBorad extends StatelessWidget {
             var data = snapshot.data!.data()!;
             var value =
                 data[field] != null ? '${data[field]}$unit' : 'Unavailable';
+
+            // Store the sensor data in the map
+            sensorData[field] = data[field]?.toString() ?? 'Unavailable';
+
             return Container(
               margin: const EdgeInsets.only(bottom: 20),
               padding: const EdgeInsets.all(20),
