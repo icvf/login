@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tawhida_login/pages/HomePage.dart';
+
 import 'login_or_register_page.dart';
 
 class AuthPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class AuthPage extends StatelessWidget {
           if (snapshot.hasData) {
             final user = snapshot.data!;
             return HomePage(
-              fromLoginPage: true,
+              fromLoginPage: false,
             );
           }
 

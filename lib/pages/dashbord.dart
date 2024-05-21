@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tawhida_login/pages/save.dart';
-import 'package:tawhida_login/side_nav/navigation.dart'; // Adjust import as necessary for your project structure
+import 'package:tawhida_login/side_nav/navigation.dart';
 
 class dashBorad extends StatelessWidget {
   dashBorad({super.key});
@@ -10,6 +10,7 @@ class dashBorad extends StatelessWidget {
   final String userId = FirebaseAuth.instance.currentUser?.uid ??
       'defaultUserId'; // Fallback to a default user ID if none is found
   final Map<String, String> sensorData = {}; // Map to store sensor data
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +26,21 @@ class dashBorad extends StatelessWidget {
             ),
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Image.asset(
+              "lib/images/logotaw.png",
+              width: 100,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(
+          width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('lib/images/background.png'),
@@ -35,31 +48,32 @@ class dashBorad extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(height: 15),
                 const Center(
                   child: Text(
-                    'Welcome To Your Tawhida Dashboard ',
+                    'Welcome To Your Tawhida Dashboard',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
-                      fontSize: 22,
+                      fontSize: 20,
                     ),
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 20),
                 sensorTile('SpO2', userId, 'spo2', 'lib/images/spo2.png', '%'),
                 sensorTile(
                     'Heart Rate', userId, 'bpm', 'lib/images/RC.png', ' BPM'),
                 sensorTile('Blood Sugar', userId, 'bloodSugar',
                     'lib/images/GLC.png', ' mg'),
                 sensorTile('Body Temperature', userId, 'temperature',
-                    'lib/images/TC.png', ' °C'),
+                    'lib/images/TC.png', '°C'),
                 sensorTile('ECG', userId, 'ecg', 'lib/images/ECG.png', ''),
+                sensorTile('EMG', userId, 'emg', 'lib/images/EMG.png', ''),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
@@ -71,7 +85,7 @@ class dashBorad extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                   ),
                   child: const Text(
                     'Save All',
@@ -112,32 +126,36 @@ class dashBorad extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(25),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ImageIcon(AssetImage(imagePath),
                       size: 40, color: Colors.blue),
-                  const SizedBox(width: 20),
+                  const SizedBox(width: 18),
                   Expanded(
                     child: Text(
                       '$title: $value',
                       style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 21.5,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
               ),
             );
           } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}',
-                style: const TextStyle(
-                    color: Colors.red,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold));
+            return Text(
+              'Error: ${snapshot.error}',
+              style: const TextStyle(
+                color: Colors.red,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            );
           }
         }
         return const CircularProgressIndicator();
