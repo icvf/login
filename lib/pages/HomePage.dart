@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              dashBorad()), // Navigate to Dashboard
+                              DashBorad()), // Navigate to Dashboard
                     );
                   },
                   style: ElevatedButton.styleFrom(

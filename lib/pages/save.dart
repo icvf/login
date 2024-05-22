@@ -13,12 +13,14 @@ class Save {
 
     // Create a map to save to Firestore
     Map<String, dynamic> dataToSave = {
-      'temperature': sensorData['temperature'],
-      'bpm': sensorData['bpm'],
-      'bloodSugar': sensorData['bloodSugar'],
-      'ecg': sensorData['ecg'],
-      'emg': sensorData['emg'],
-      'spo2': sensorData['spo2'],
+      'measurements': {
+        'temperature': sensorData['temperature'],
+        'bpm': sensorData['bpm'],
+        'bloodSugar': sensorData['bloodSugar'],
+        'ecg': sensorData['ecg'],
+        'emg': sensorData['emg'],
+        'spo2': sensorData['spo2'],
+      },
     };
 
     // Get the document reference

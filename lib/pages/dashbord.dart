@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:tawhida_login/pages/save.dart';
 import 'package:tawhida_login/side_nav/navigation.dart';
 
-class dashBorad extends StatelessWidget {
-  dashBorad({super.key});
+class DashBorad extends StatelessWidget {
+  DashBorad({super.key});
 
   final String userId = FirebaseAuth.instance.currentUser?.uid ??
       'defaultUserId'; // Fallback to a default user ID if none is found
